@@ -9,6 +9,11 @@ namespace PruebaTecnica.Application.Wrappers
         public int RecordsFiltered { get; set; }
         public int RecordsTotal { get; set; }
 
+        public PagedResponse() 
+        {
+        
+        }
+
         public PagedResponse(T data, int pageNumber, int pageSize, RecordsCount recordsCount)
         {
             this.PageNumber = pageNumber;
