@@ -50,8 +50,8 @@ namespace PruebaTecnica.WebApi.Middlewares
                         response.StatusCode = (int)HttpStatusCode.InternalServerError;
                         break;
                 }
-                var result = JsonSerializer.Serialize(responseModel);
 
+                var result = JsonSerializer.Serialize(responseModel);
                 await response.WriteAsync(result);
             }
         }

@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 using PruebaTecnica.Domain.Entities;
 using PruebaTecnica.Application.Wrappers;
 using PruebaTecnica.Application.Interfaces.Repositories;
+using System.ComponentModel.DataAnnotations;
 
 namespace PruebaTecnica.Application.Features.Authors.Commands.CreateAuthor
 {
     public partial class CreateAuthorCommand : IRequest<Response<Author>>
     {
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string BirthCity { get; set; }
         public DateTime BirthDate { get; set; }
         public string Email { get; set; }

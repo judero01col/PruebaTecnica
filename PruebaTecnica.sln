@@ -5,19 +5,23 @@ VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{A15863DF-1243-4C30-8F5A-FB80AF1C06D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaTecnica.WebApi", "PruebaTecnica\PruebaTecnica.WebApi\PruebaTecnica.WebApi.csproj", "{D520DC8C-9ECA-404A-837B-AE84EFA232BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaTecnica.WebApi", "PruebaTecnica\PruebaTecnica.WebApi\PruebaTecnica.WebApi.csproj", "{D520DC8C-9ECA-404A-837B-AE84EFA232BF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D188F728-709D-4601-B82C-2EFFA07F196B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaTecnica.Application", "PruebaTecnica\PruebaTecnica.Application\PruebaTecnica.Application.csproj", "{16D0F434-ACE1-4E08-8EAB-2BE915F65B10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaTecnica.Application", "PruebaTecnica\PruebaTecnica.Application\PruebaTecnica.Application.csproj", "{16D0F434-ACE1-4E08-8EAB-2BE915F65B10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaTecnica.Domain", "PruebaTecnica\PruebaTecnica.Domain\PruebaTecnica.Domain.csproj", "{E8C2A34F-482B-46CC-83B2-63633B58581F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaTecnica.Domain", "PruebaTecnica\PruebaTecnica.Domain\PruebaTecnica.Domain.csproj", "{E8C2A34F-482B-46CC-83B2-63633B58581F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6592F7C7-BB08-474F-91E2-5E7F895E6C67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaTecnica.Infrastructure.Persistence", "PruebaTecnica\PruebaTecnica.Infrastructure.Persistence\PruebaTecnica.Infrastructure.Persistence.csproj", "{179C0824-07B1-4F77-9CA8-649D82E30A1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaTecnica.Infrastructure.Persistence", "PruebaTecnica\PruebaTecnica.Infrastructure.Persistence\PruebaTecnica.Infrastructure.Persistence.csproj", "{179C0824-07B1-4F77-9CA8-649D82E30A1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaTecnica.Infrastructure.Shared", "PruebaTecnica\PruebaTecnica.Infrastructure.Shared\PruebaTecnica.Infrastructure.Shared.csproj", "{684BDED7-BD12-44CC-BD41-7546B486AF63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PruebaTecnica.Infrastructure.Shared", "PruebaTecnica\PruebaTecnica.Infrastructure.Shared\PruebaTecnica.Infrastructure.Shared.csproj", "{684BDED7-BD12-44CC-BD41-7546B486AF63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Proyecto1", "Proyecto1", "{607347A2-649B-4D05-A20D-B273917E68F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Proyecto2", "Proyecto2", "{8980532E-7D4A-4F68-8773-5A591A379D03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,9 +54,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{A15863DF-1243-4C30-8F5A-FB80AF1C06D6} = {607347A2-649B-4D05-A20D-B273917E68F5}
 		{D520DC8C-9ECA-404A-837B-AE84EFA232BF} = {A15863DF-1243-4C30-8F5A-FB80AF1C06D6}
+		{D188F728-709D-4601-B82C-2EFFA07F196B} = {607347A2-649B-4D05-A20D-B273917E68F5}
 		{16D0F434-ACE1-4E08-8EAB-2BE915F65B10} = {D188F728-709D-4601-B82C-2EFFA07F196B}
 		{E8C2A34F-482B-46CC-83B2-63633B58581F} = {D188F728-709D-4601-B82C-2EFFA07F196B}
+		{6592F7C7-BB08-474F-91E2-5E7F895E6C67} = {607347A2-649B-4D05-A20D-B273917E68F5}
 		{179C0824-07B1-4F77-9CA8-649D82E30A1B} = {6592F7C7-BB08-474F-91E2-5E7F895E6C67}
 		{684BDED7-BD12-44CC-BD41-7546B486AF63} = {6592F7C7-BB08-474F-91E2-5E7F895E6C67}
 	EndGlobalSection

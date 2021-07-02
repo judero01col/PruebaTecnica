@@ -8,6 +8,7 @@ using PruebaTecnica.Domain.Entities;
 using PruebaTecnica.Domain.Settings;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,8 +19,10 @@ namespace PruebaTecnica.Application.Features.Books.Commands.CreateBook
     public partial class CreateBookCommand : IRequest<Response<Book>>
     {
         public Guid AuthorId { get; set; }
+        [Required]
         public string Title { get; set; }
         public int Year { get; set; }
+        [Required]
         public string Gender { get; set; }
         public int PageNumbers { get; set; }
     }
@@ -41,17 +44,17 @@ namespace PruebaTecnica.Application.Features.Books.Commands.CreateBook
 
         public async Task<Response<Book>> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
-            var position = _mapper.Map<Book>(request);
+            var book = _mapper.Map<Book>(request);
 
-            var Author = await _AuthorRepository.GetByIdAsync(position.AuthorId);
+            var Author = await _AuthorRepository.GetByIdAsync(book.AuthorId);
 
             if (Author != null)
             {
-                var Counter = await _BookRepository.GetCounterAsync("AuthorId==@0", new object[] { position.AuthorId.ToString() });
+                var Counter = await _BookRepository.GetCounterAsync("AuthorId==@0", new object[] { book.AuthorId.ToString() });
 
                 if (Counter < _appSettings.MaxBookAllow)
                 {
-                    var entityPosition = await _BookRepository.AddAsync(position);
+                    var entityPosition = await _BookRepository.AddAsync(book);
                     return new Response<Book>(entityPosition);
                 }
                 else

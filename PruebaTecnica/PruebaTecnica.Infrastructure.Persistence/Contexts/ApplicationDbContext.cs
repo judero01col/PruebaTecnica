@@ -49,45 +49,7 @@ namespace PruebaTecnica.Infrastructure.Persistence.Contexts
         {
             //var _mockData = this.Database.GetService<IMockService>();
             //var seedPositions = _mockData.SeedPositions(1000);
-            //builder.Entity<Position>().HasData(seedPositions);
-
-            //builder.Entity<Employee>().HasData(new Employee[]
-            //{
-            //    new Employee
-            //    {
-            //        Id = new Guid("5D5C4AAC-936B-4E54-B8CF-897130230816"),
-            //        FirstName = "FirstName" ,                   
-            //        LastName = "LastName",
-            //        EmployeeTitle = "EmployeeTitle",
-            //        DOB = new DateTime(2020, 08, 3),
-            //        Email = "judero01@gmail.com",
-            //        Gender = Domain.Enums.Gender.Male,
-            //        EmployeeNumber = "123",
-            //        Suffix = "Suffix",
-            //        Phone="Phone",
-            //        CreatedBy ="sfs",
-            //        Created = new DateTime(2020, 08, 3),
-            //        LastModifiedBy="sdsd",
-            //        LastModified =new DateTime(2020, 08, 3)
-            //    },
-            //    new Employee
-            //    {
-            //        Id = new Guid("5D5C4AAC-936B-4E54-B8CF-897130230817"),
-            //        FirstName = "FirstName" ,                    
-            //        LastName = "LastName",
-            //        EmployeeTitle = "EmployeeTitle",
-            //        DOB = new DateTime(2020, 08, 3),
-            //        Email = "judero01@gmail.com",
-            //        Gender = Domain.Enums.Gender.Male,
-            //        EmployeeNumber = "123",
-            //        Suffix = "Suffix",
-            //        Phone="Phone",
-            //        CreatedBy ="sfs",
-            //        Created = new DateTime(2020, 08, 3),
-            //        LastModifiedBy="sdsd",
-            //        LastModified =new DateTime(2020, 08, 3)
-            //    }
-            //});
+            //builder.Entity<Position>().HasData(seedPositions);           
 
             base.OnModelCreating(builder);
         }
