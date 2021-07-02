@@ -33,10 +33,10 @@ namespace PruebaTecnica.Infrastructure.Persistence
 
             #region Repositories
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
-
             services.AddTransient<IPositionRepositoryAsync, PositionRepositoryAsync>();
             services.AddTransient<IEmployeeRepositoryAsync, EmployeeRepositoryAsync>();
             services.AddTransient<IAuthorRepositoryAsync, AuthorRepositoryAsync>();
+            services.AddTransient<IBookRepositoryAsync, BookRepositoryAsync>();
             #endregion
         }
     }

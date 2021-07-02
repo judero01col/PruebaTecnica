@@ -8,6 +8,9 @@ namespace PruebaTecnica.Application.Interfaces
     {
         Task<T> GetByIdAsync(Guid id);
         Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync(string predicate, object[] arg);
+        Task<int> GetCounterAsync();
+        Task<int> GetCounterAsync(string predicate, object[] arg);
         Task<IEnumerable<T>> GetPagedReponseAsync(int pageNumber, int pageSize);
         Task<IEnumerable<T>> GetPagedAdvancedReponseAsync(int pageNumber, int pageSize, string orderBy, string fields);
         Task<T> AddAsync(T entity);

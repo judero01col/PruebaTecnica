@@ -52,7 +52,6 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repository
             return entity;
         }
 
-
         public async Task UpdateAsync(T entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
@@ -70,6 +69,29 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repository
             return await _dbContext
                  .Set<T>()
                  .ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(string predicate, object[] args)
+        {
+            return await _dbContext
+                 .Set<T>()
+                 .Where<T>(predicate, args)
+                 .ToListAsync();
+        }
+
+        public async Task<int> GetCounterAsync()
+        {
+            return await _dbContext
+                 .Set<T>()
+                 .CountAsync();
+        }
+
+        public async Task<int> GetCounterAsync(string predicate, object[] args)
+        {
+            return await _dbContext
+                 .Set<T>()
+                 .Where<T>(predicate, args)
+                 .CountAsync();
         }
     }
 }

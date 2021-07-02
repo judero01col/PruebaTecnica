@@ -17,7 +17,7 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
     public class PositionRepositoryAsync : GenericRepositoryAsync<Position>, IPositionRepositoryAsync
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly DbSet<Position> _positions;
+        private readonly DbSet<Position> _dataSet;
         private IDataShapeHelper<Position> _dataShaper;
         private readonly IMockService _mockData;
 
@@ -25,14 +25,14 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
             IDataShapeHelper<Position> dataShaper, IMockService mockData) : base(dbContext)
         {
             _dbContext = dbContext;
-            _positions = dbContext.Set<Position>();
+            _dataSet = dbContext.Set<Position>();
             _dataShaper = dataShaper;
             _mockData = mockData;
         }
 
         public async Task<bool> IsUniquePositionNumberAsync(string positionNumber)
         {
-            return await _positions
+            return await _dataSet
                 .AllAsync(p => p.PositionNumber != positionNumber);
         }
 
@@ -58,7 +58,7 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
             int recordsTotal, recordsFiltered;
 
             // Setup IQueryable
-            var result = _positions
+            var result = _dataSet
                 .AsNoTracking()
                 .AsExpandable();
 

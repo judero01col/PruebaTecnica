@@ -1,42 +1,44 @@
 ﻿using LinqKit;
 using Microsoft.EntityFrameworkCore;
-using PruebaTecnica.Application.Features.Employees.Queries.GetEmployees;
+using PruebaTecnica.Application.Features.Books.Queries.GetBooks;
 using PruebaTecnica.Application.Interfaces;
 using PruebaTecnica.Application.Interfaces.Repositories;
 using PruebaTecnica.Application.Parameters;
 using PruebaTecnica.Domain.Entities;
 using PruebaTecnica.Infrastructure.Persistence.Contexts;
 using PruebaTecnica.Infrastructure.Persistence.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace PruebaTecnica.Infrastructure.Persistence.Repositories
 {
-    public class EmployeeRepositoryAsync : GenericRepositoryAsync<Employee>, IEmployeeRepositoryAsync
+    public class BookRepositoryAsync : GenericRepositoryAsync<Book>, IBookRepositoryAsync
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly DbSet<Employee> _dataSet;
-        private IDataShapeHelper<Employee> _dataShaper;
+        private readonly DbSet<Book> _dataSet;
+        private IDataShapeHelper<Book> _dataShaper;
         private readonly IMockService _mockData;
-
-        public EmployeeRepositoryAsync(ApplicationDbContext dbContext,
-            IDataShapeHelper<Employee> dataShaper,
+        
+        public BookRepositoryAsync(ApplicationDbContext dbContext,
+            IDataShapeHelper<Book> dataShaper,
             IMockService mockData) : base(dbContext)
         {
             _dbContext = dbContext;
-            _dataSet = dbContext.Set<Employee>();
+            _dataSet = dbContext.Set<Book>();
             _dataShaper = dataShaper;
             _mockData = mockData;
         }
 
-        public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedEmployeeReponseAsync(GetEmployeesQuery requestParameter)
+        public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedBookReponseAsync(GetBooksQuery requestParameter)
         {
-            IQueryable<Employee> result;
+            IQueryable<Book> result;
 
-            var employeeNumber = requestParameter.EmployeeNumber;
-            var employeeTitle = requestParameter.EmployeeTitle;
+            var SearchField1 = requestParameter.Title;
+            var SearchField2 = requestParameter.Gender;
 
             var pageNumber = requestParameter.PageNumber;
             var pageSize = requestParameter.PageSize;
@@ -54,7 +56,7 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
             recordsTotal = result.Count();
 
             // filter data
-            FilterByColumn(ref result, employeeNumber, employeeTitle);
+            FilterByColumn(ref result, SearchField1, SearchField2);
 
             // Count records after filter
             recordsFiltered = result.Count();
@@ -75,7 +77,7 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
             //limit query fields
             if (!string.IsNullOrWhiteSpace(fields))
             {
-                result = result.Select<Employee>("new(" + fields + ")");
+                result = result.Select<Book>("new(" + fields + ")");
             }
             // paging
             result = result
@@ -94,21 +96,21 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
             return (shapeData, recordsCount);
         }
 
-        private void FilterByColumn(ref IQueryable<Employee> positions, string employeeNumber, string employeeTitle)
+        private void FilterByColumn(ref IQueryable<Book> positions, string SearchField1, string SearchField2)
         {
             if (!positions.Any())
                 return;
 
-            if (string.IsNullOrEmpty(employeeTitle) && string.IsNullOrEmpty(employeeNumber))
+            if (string.IsNullOrEmpty(SearchField2) && string.IsNullOrEmpty(SearchField1))
                 return;
 
-            var predicate = PredicateBuilder.New<Employee>();
+            var predicate = PredicateBuilder.New<Book>();
 
-            if (!string.IsNullOrEmpty(employeeNumber))
-                predicate = predicate.And(p => p.EmployeeNumber.Contains(employeeNumber.Trim()));
+            if (!string.IsNullOrEmpty(SearchField1))
+                predicate = predicate.And(p => p.Title.Contains(SearchField1.Trim()));
 
-            if (!string.IsNullOrEmpty(employeeTitle))
-                predicate = predicate.And(p => p.EmployeeTitle.Contains(employeeTitle.Trim()));
+            if (!string.IsNullOrEmpty(SearchField2))
+                predicate = predicate.And(p => p.Gender.Contains(SearchField2.Trim()));
 
             positions = positions.Where(predicate);
         }

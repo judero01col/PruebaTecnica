@@ -23,6 +23,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Logs\Error\error_20210630.log" />
+    <None Remove="Logs\Error\error_20210701.log" />
+    <None Remove="Logs\Error\error_20210702.log" />
+    <None Remove="Logs\Info\info_20210630.log" />
+    <None Remove="Logs\Info\info_20210701.log" />
+    <None Remove="Logs\Info\info_20210702.log" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -49,6 +58,11 @@
     <ProjectReference Include="..\PruebaTecnica.Application\PruebaTecnica.Application.csproj" />
     <ProjectReference Include="..\PruebaTecnica.Infrastructure.Persistence\PruebaTecnica.Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\PruebaTecnica.Infrastructure.Shared\PruebaTecnica.Infrastructure.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\Error\" />
+    <Folder Include="Logs\Info\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

@@ -57,6 +57,46 @@ namespace PruebaTecnica.Infrastructure.Persistence.Migrations
                     b.ToTable("Authors");
                 });
 
+            modelBuilder.Entity("PruebaTecnica.Domain.Entities.Book", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("RAW(16)");
+
+                    b.Property<Guid>("AuthorId")
+                        .HasColumnType("RAW(16)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("TIMESTAMP(7)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("NVARCHAR2(2000)");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("NVARCHAR2(2000)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("TIMESTAMP(7)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("NVARCHAR2(2000)");
+
+                    b.Property<int>("PageNumbers")
+                        .HasColumnType("NUMBER(10)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("NVARCHAR2(2000)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("NUMBER(10)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("Books");
+                });
+
             modelBuilder.Entity("PruebaTecnica.Domain.Entities.Employee", b =>
                 {
                     b.Property<Guid>("Id")
@@ -146,6 +186,17 @@ namespace PruebaTecnica.Infrastructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Positions");
+                });
+
+            modelBuilder.Entity("PruebaTecnica.Domain.Entities.Book", b =>
+                {
+                    b.HasOne("PruebaTecnica.Domain.Entities.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
                 });
 #pragma warning restore 612, 618
         }

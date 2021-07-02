@@ -19,7 +19,7 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
     public class AuthorRepositoryAsync : GenericRepositoryAsync<Author>, IAuthorRepositoryAsync
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly DbSet<Author> _employee;
+        private readonly DbSet<Author> _dataSet;
         private IDataShapeHelper<Author> _dataShaper;
         private readonly IMockService _mockData;
 
@@ -29,7 +29,7 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
             IMockService mockData) : base(dbContext)
         {
             _dbContext = dbContext;
-            _employee = dbContext.Set<Author>();
+            _dataSet = dbContext.Set<Author>();
             _dataShaper = dataShaper;
             _mockData = mockData;
         }
@@ -38,8 +38,8 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
         {
             IQueryable<Author> result;
 
-            var employeeNumber = requestParameter.FirstName;
-            var employeeTitle = requestParameter.LastName;
+            var SearchField1 = requestParameter.FirstName;
+            var SearchField2 = requestParameter.LastName;
 
             var pageNumber = requestParameter.PageNumber;
             var pageSize = requestParameter.PageSize;
@@ -51,13 +51,13 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
             //int seedCount = 1000;
             //result = _mockData.GetEmployees(seedCount).AsQueryable();
 
-            result = _employee.AsQueryable();
+            result = _dataSet.AsQueryable();
 
             // Count records total
             recordsTotal = result.Count();
 
             // filter data
-            FilterByColumn(ref result, employeeNumber, employeeTitle);
+            FilterByColumn(ref result, SearchField1, SearchField2);
 
             // Count records after filter
             recordsFiltered = result.Count();
@@ -97,21 +97,21 @@ namespace PruebaTecnica.Infrastructure.Persistence.Repositories
             return (shapeData, recordsCount);
         }
 
-        private void FilterByColumn(ref IQueryable<Author> positions, string employeeNumber, string employeeTitle)
+        private void FilterByColumn(ref IQueryable<Author> positions, string SearchField1, string SearchField2)
         {
             if (!positions.Any())
                 return;
 
-            if (string.IsNullOrEmpty(employeeTitle) && string.IsNullOrEmpty(employeeNumber))
+            if (string.IsNullOrEmpty(SearchField2) && string.IsNullOrEmpty(SearchField1))
                 return;
 
             var predicate = PredicateBuilder.New<Author>();
 
-            if (!string.IsNullOrEmpty(employeeNumber))
-                predicate = predicate.And(p => p.FirstName.Contains(employeeNumber.Trim()));
+            if (!string.IsNullOrEmpty(SearchField1))
+                predicate = predicate.And(p => p.FirstName.Contains(SearchField1.Trim()));
 
-            if (!string.IsNullOrEmpty(employeeTitle))
-                predicate = predicate.And(p => p.LastName.Contains(employeeTitle.Trim()));
+            if (!string.IsNullOrEmpty(SearchField2))
+                predicate = predicate.And(p => p.LastName.Contains(SearchField2.Trim()));
 
             positions = positions.Where(predicate);
         }        

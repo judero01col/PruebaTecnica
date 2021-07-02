@@ -22,11 +22,15 @@ namespace PruebaTecnica.Infrastructure.Shared.Services
             var seedPositionFaker = new AuthorSeedBogusConfig();
             return seedPositionFaker.Generate(rowCount);
         }
-
+        public List<Book> GetBooks(int rowCount)
+        {
+            var seedPositionFaker = new BookSeedBogusConfig();
+            return seedPositionFaker.Generate(rowCount);
+        }
         public List<Position> SeedPositions(int rowCount)
         {
             var seedPositionFaker = new PositionSeedBogusConfig();
             return seedPositionFaker.Generate(rowCount);
-        }
+        }        
     }
 }

@@ -5,10 +5,8 @@ using System;
 namespace PruebaTecnica.Domain.Entities
 {
     public class Employee : AuditableBaseEntity
-    {
-        //public Guid Id { get; set; }
-        public string FirstName { get; set; }
-        //public string MiddleName { get; set; }
+    {        
+        public string FirstName { get; set; }     
         public string LastName { get; set; }
         public string EmployeeTitle { get; set; }
         public DateTime DOB { get; set; }

@@ -17,6 +17,7 @@ namespace PruebaTecnica.WebApi.Extensions
             services.AddSwaggerGen(c =>
             {
                 c.IncludeXmlComments(XmlCommentsFilePath);
+
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
@@ -24,11 +25,12 @@ namespace PruebaTecnica.WebApi.Extensions
                     Description = "This Api will be responsible for overall data distribution and authorization.",
                     Contact = new OpenApiContact
                     {
-                        Name = "Jane Doe",
-                        Email = "jdoe@janedoe.com",
-                        Url = new Uri("https://janedoe.com/contact"),
+                        Name = "Jurgen De Leon Rodriguez",
+                        Email = "judero01@gmail.com",
+                        Url = new Uri("https://github.com/judero01col"),
                     }
                 });
+
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
@@ -38,6 +40,7 @@ namespace PruebaTecnica.WebApi.Extensions
                     BearerFormat = "JWT",
                     Description = "Input your Bearer token in this format - Bearer {your token here} to access this API",
                 });
+
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {

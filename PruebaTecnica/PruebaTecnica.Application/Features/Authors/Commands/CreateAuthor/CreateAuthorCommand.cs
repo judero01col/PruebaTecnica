@@ -1,11 +1,11 @@
-﻿using AutoMapper;
+﻿using System;
 using MediatR;
-using PruebaTecnica.Application.Interfaces.Repositories;
-using PruebaTecnica.Application.Wrappers;
-using PruebaTecnica.Domain.Entities;
-using System;
+using AutoMapper;
 using System.Threading;
 using System.Threading.Tasks;
+using PruebaTecnica.Domain.Entities;
+using PruebaTecnica.Application.Wrappers;
+using PruebaTecnica.Application.Interfaces.Repositories;
 
 namespace PruebaTecnica.Application.Features.Authors.Commands.CreateAuthor
 {

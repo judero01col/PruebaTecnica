@@ -27,6 +27,7 @@ namespace PruebaTecnica.Infrastructure.Persistence.Contexts
         public DbSet<Position> Positions { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Author> Authors { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

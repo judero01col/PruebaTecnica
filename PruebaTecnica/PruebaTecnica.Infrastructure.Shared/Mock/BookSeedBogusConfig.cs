@@ -3,9 +3,9 @@ using PruebaTecnica.Domain.Entities;
 
 namespace PruebaTecnica.Infrastructure.Shared.Mock
 {
-    public class AuthorSeedBogusConfig : AutoFaker<Author>
+    public class BookSeedBogusConfig : AutoFaker<Book>
     {
-        public AuthorSeedBogusConfig()
+        public BookSeedBogusConfig()
         {
             //Randomizer.Seed = new Random(8675309);
             //RuleFor(p => p.Id, f => Guid.NewGuid());

@@ -22,6 +22,7 @@ namespace PruebaTecnica.Application
             services.AddScoped<IDataShapeHelper<Position>, DataShapeHelper<Position>>();
             services.AddScoped<IDataShapeHelper<Employee>, DataShapeHelper<Employee>>();
             services.AddScoped<IDataShapeHelper<Author>, DataShapeHelper<Author>>();
+            services.AddScoped<IDataShapeHelper<Book>, DataShapeHelper<Book>>();
 
             services.AddScoped<IModelHelper, ModelHelper>();
             //services.AddScoped<IMockData, MockData>();
